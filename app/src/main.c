@@ -30,7 +30,7 @@ int main(void)
 
     while (1) {
         gpio_pin_toggle_dt(&led);
-        k_sleep(K_MSEC(1000));
+        k_sleep(K_MSEC(CONFIG_BLINK_SLEEP_TIME_MS));
     }
 
     return 0;
