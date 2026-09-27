@@ -15,7 +15,7 @@
 #include <zephyr/kernel.h>
 #include <zephyr/drivers/gpio.h>
 
-#define LED_NODE DT_ALIAS(led0)
+#define LED_NODE DT_ALIAS(app_led) // changed from LED0_NODE to app_led
 
 static const struct gpio_dt_spec led =
     GPIO_DT_SPEC_GET(LED_NODE, gpios);
@@ -30,7 +30,7 @@ int main(void)
 
     while (1) {
         gpio_pin_toggle_dt(&led);
-        k_sleep(K_MSEC(CONFIG_BLINK_SLEEP_TIME_MS));
+        k_sleep(K_MSEC(CONFIG_APP_HEARTBEAT_PERIOD_MS));
     }
 
     return 0;
